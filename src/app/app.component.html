@@ -8,6 +8,8 @@
 <div class="container">
   <div class="list-item" *ngFor="let r of reservations">
     <img [src]="'https://rsvpstorageaccount.blob.core.windows.net/thumb/' + r.thumbUrl" />
-    <label>{{r.firstname}} {{r.lastname}}</label>
+    <div class="list-item-content">
+      <label>{{r.firstname}} {{r.lastname}}</label>
+    </div>
   </div>
 </div>
