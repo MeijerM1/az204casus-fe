@@ -1,0 +1,12 @@
+<div *ngIf="reservation">
+  <input type="text" [(ngModel)]="reservation.voornaam" />
+  <input type="text" [(ngModel)]="reservation.achternaam" />
+  <button (click)="createReservation()"> Create reservation</button>
+</div>
+
+<div>
+  <div *ngFor="let r of reservations">
+    <label>{{r.firstName}}</label>
+    <img [src]="r.thumbUrl" />
+  </div>
+</div>
