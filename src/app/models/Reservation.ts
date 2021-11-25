@@ -1,6 +1,6 @@
 export interface Reservation {
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     photoUrl: string;
     thumbUrl: string;
 }

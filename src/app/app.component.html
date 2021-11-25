@@ -1,12 +1,13 @@
 <div *ngIf="reservation">
   <input type="text" [(ngModel)]="reservation.voornaam" />
   <input type="text" [(ngModel)]="reservation.achternaam" />
+  <input type="file" accept="image/jpeg" (change)="onSelectFile($event)" />
   <button (click)="createReservation()"> Create reservation</button>
 </div>
 
 <div>
   <div *ngFor="let r of reservations">
-    <label>{{r.firstName}}</label>
-    <img [src]="r.thumbUrl" />
+    <label>{{r.firstname}}</label>
+    <img [src]="'https://rsvpstorageaccount.blob.core.windows.net/thumb/' + r.thumbUrl" />
   </div>
 </div>

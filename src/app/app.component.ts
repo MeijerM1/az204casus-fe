@@ -24,8 +24,25 @@ export class AppComponent {
     this.getReservations();
   }
 
+  onSelectFile(fileInput: any) {
+    this.reservation.foto = <File>fileInput.target.files[0];
+
+    console.log(this.reservation.foto)
+  }
+
   async createReservation() {
+    if (!this.reservation.foto) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('voornaam', this.reservation.voornaam);
+    formData.append('achternaam', this.reservation.achternaam);
+    formData.append('foto', this.reservation.foto);
+
     const res = await this.httpClient.post(this.apiUrl, this.reservation).toPromise();
+
+    this.getReservations();
   }
 
   async getReservations() {
