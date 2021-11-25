@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CreateReservation } from './models/CreateReservation';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reservation } from './models/Reservation';
 
 @Component({
@@ -27,7 +27,7 @@ export class AppComponent {
   onSelectFile(fileInput: any) {
     this.reservation.foto = <File>fileInput.target.files[0];
 
-    console.log(this.reservation.foto)
+    console.log(this.reservation.foto);
   }
 
   async createReservation() {
@@ -38,9 +38,9 @@ export class AppComponent {
     const formData = new FormData();
     formData.append('voornaam', this.reservation.voornaam);
     formData.append('achternaam', this.reservation.achternaam);
-    formData.append('foto', this.reservation.foto);
+    formData.append('foto', this.reservation.foto, this.reservation.foto.name);
 
-    const res = await this.httpClient.post(this.apiUrl, this.reservation).toPromise();
+    const res = await this.httpClient.post(this.apiUrl, formData).toPromise();
 
     this.getReservations();
   }
